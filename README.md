@@ -167,21 +167,91 @@ Gracefully manages blank responses with helpful prompts and retry logic.
 
 ## Testing
 
-### Manual Testing Scenarios
+Each test order demonstrates different conversation paths and bot responses:
 
-1. **Standard Flow**: Enter valid order ID, review status, exit
-2. **Error Recovery**: Invalid input, correction, successful completion
-3. **Lost Package**: File claim, receive claim ID, contact information
-4. **Delivery Dispute**: Report non-delivery, automated dispute filing
+### **ORD-1001** - In Transit Package
 
-### Sample Order IDs for Testing
+```
+🤖  Here's what I found:
+🤖    Carrier:         FedEx
+🤖    Tracking #:      7489234823948
+🤖    Status:          📦  In Transit
+🤖    Last seen:       Chicago, IL
+🤖    Est. delivery:   Tomorrow, Apr 21
 
-Each test order represents a different package status and demonstrates specific conversation paths:
+🤖  Your package is on its way and should arrive
+🤖  Tomorrow, Apr 21. No action needed right now!
+```
 
-- **ORD-1001**: Package in transit with estimated delivery
-- **ORD-2002**: Delivered package with delivery confirmation
-- **ORD-3003**: Delayed package with updated timeline
-- **ORD-4004**: Lost package requiring claim filing
+### **ORD-2002** - Delivered Package with Dispute Flow
+
+```
+🤖  Here's what I found:
+🤖    Carrier:         UPS
+🤖    Tracking #:      1Z999AA10123456784
+🤖    Status:          ✅  Delivered
+🤖    Delivered on:    Apr 18, 2026
+🤖    Delivered to:    Front door
+
+🤖  Our records show this package was delivered on Apr 18, 2026.
+🤖  Did you receive it? (yes / no)
+  You › no
+🤖  I'm sorry to hear that. I'll file a non-delivery dispute for you.
+🤖  Dispute filed! Your claim ID is: CLM-47392
+🤖  Our team will investigate and follow up within 2 business days.
+```
+
+### **ORD-3003** - Delayed Package with Options Menu
+
+```
+🤖  Here's what I found:
+🤖    Carrier:         USPS
+🤖    Status:          ⏳  Delayed
+🤖    Last seen:       Memphis, TN
+🤖    Reason:          Weather delay
+🤖    New est. date:   Apr 24, 2026
+
+🤖  I'm sorry your package is delayed. Here's what you can do:
+🤖    [1] File a claim with the carrier
+🤖    [2] Contact the carrier directly
+🤖    [3] Speak to a support agent
+  You › 2
+🤖  You can reach USPS at: 1-800-275-8777 / usps.com
+🤖  Have your tracking number ready: 9400111899223397910495
+```
+
+### **ORD-4004** - Lost Package with Claim Filing
+
+```
+🤖  Here's what I found:
+🤖    Carrier:         DHL
+🤖    Status:          ❓  Lost / Missing
+🤖    Last seen:       Los Angeles, CA
+🤖    Last update:     Apr 10, 2026
+
+🤖  I'm sorry — your package appears to be missing. Here's what you can do:
+🤖    [1] File a claim with the carrier
+🤖    [2] Contact the carrier directly
+🤖    [3] Speak to a support agent
+  You › 1
+🤖  Claim filed successfully! Your claim ID is: CLM-85029
+🤖  Carrier: DHL will be notified automatically.
+🤖  You'll receive a confirmation email with next steps.
+```
+
+### Error Handling Example
+
+```
+🤖  Please enter your Order ID (format: ORD-XXXX):
+  You › abc123
+🤖  That doesn't look like a valid Order ID. It should look like
+🤖  ORD-1234. You have 2 attempt(s) remaining.
+
+🤖  Please enter your Order ID (format: ORD-XXXX):
+  You › ORD-9999
+🤖  I couldn't find Order ID 'ORD-9999' in our system.
+🤖  Double-check the ID on your confirmation email. 1 attempt(s) left.
+```
 
 ## Technical Implementation
 
@@ -199,4 +269,3 @@ Each test order represents a different package status and demonstrates specific 
 - Database storage for persistent user sessions
 - Multi-language support for international customers
 - Advanced analytics for conversation optimization
-
