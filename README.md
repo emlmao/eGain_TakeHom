@@ -195,7 +195,7 @@ Each test order demonstrates different conversation paths and bot responses:
 
 🤖  Our records show this package was delivered on Apr 18, 2026.
 🤖  Did you receive it? (yes / no)
-  You › no
+You › no
 🤖  I'm sorry to hear that. I'll file a non-delivery dispute for you.
 🤖  Dispute filed! Your claim ID is: CLM-47392
 🤖  Our team will investigate and follow up within 2 business days.
@@ -215,7 +215,7 @@ Each test order demonstrates different conversation paths and bot responses:
 🤖    [1] File a claim with the carrier
 🤖    [2] Contact the carrier directly
 🤖    [3] Speak to a support agent
-  You › 2
+You › 2
 🤖  You can reach USPS at: 1-800-275-8777 / usps.com
 🤖  Have your tracking number ready: 9400111899223397910495
 ```
@@ -233,7 +233,7 @@ Each test order demonstrates different conversation paths and bot responses:
 🤖    [1] File a claim with the carrier
 🤖    [2] Contact the carrier directly
 🤖    [3] Speak to a support agent
-  You › 1
+You › 1
 🤖  Claim filed successfully! Your claim ID is: CLM-85029
 🤖  Carrier: DHL will be notified automatically.
 🤖  You'll receive a confirmation email with next steps.
