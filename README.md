@@ -83,61 +83,6 @@ Start → Greeting → Order ID Input → Package Lookup → Status Handler → 
 
 Each stage includes comprehensive error handling and retry mechanisms to ensure smooth user interactions.
 
-## Error Handling Examples
-
-The application includes multiple sophisticated error handling patterns:
-
-### 1. Invalid Order ID Format
-
-Validates input against required pattern (ORD-XXXX) with clear feedback and retry options.
-
-### 2. Unclear User Responses
-
-Processes various forms of yes/no responses with intelligent normalization and fallback menus.
-
-### 3. Menu Selection Errors
-
-Handles out-of-range inputs with guided correction and alternative options.
-
-### 4. Empty Input Handling
-
-Gracefully manages blank responses with helpful prompts and retry logic.
-
-## Testing
-
-### Manual Testing Scenarios
-
-1. **Standard Flow**: Enter valid order ID, review status, exit
-2. **Error Recovery**: Invalid input, correction, successful completion
-3. **Lost Package**: File claim, receive claim ID, contact information
-4. **Delivery Dispute**: Report non-delivery, automated dispute filing
-
-### Sample Order IDs for Testing
-
-Each test order represents a different package status and demonstrates specific conversation paths:
-
-- **ORD-1001**: Package in transit with estimated delivery
-- **ORD-2002**: Delivered package with delivery confirmation
-- **ORD-3003**: Delayed package with updated timeline
-- **ORD-4004**: Lost package requiring claim filing
-
-## Technical Implementation
-
-### Design Decisions
-
-- **CLI Interface**: Enables rapid development focus on conversation logic
-- **Retry Patterns**: Three-attempt system balancing user patience with efficiency
-- **Mock Data**: Realistic scenarios based on actual package tracking patterns
-- **State Management**: Clean conversation flow without complex state machines
-
-## Future Enhancements
-
-- Integration with real carrier APIs for live package data
-- Web-based interface for broader accessibility
-- Database storage for persistent user sessions
-- Multi-language support for international customers
-- Advanced analytics for conversation optimization
-
 ```mermaid
 flowchart TD
     A([Start]) --> B[Greet user]
@@ -199,3 +144,59 @@ flowchart TD
     AE -- Unclear after 3x --> FW
     FW --> Z([End])
 ```
+
+## Error Handling Examples
+
+The application includes multiple sophisticated error handling patterns:
+
+### 1. Invalid Order ID Format
+
+Validates input against required pattern (ORD-XXXX) with clear feedback and retry options.
+
+### 2. Unclear User Responses
+
+Processes various forms of yes/no responses with intelligent normalization and fallback menus.
+
+### 3. Menu Selection Errors
+
+Handles out-of-range inputs with guided correction and alternative options.
+
+### 4. Empty Input Handling
+
+Gracefully manages blank responses with helpful prompts and retry logic.
+
+## Testing
+
+### Manual Testing Scenarios
+
+1. **Standard Flow**: Enter valid order ID, review status, exit
+2. **Error Recovery**: Invalid input, correction, successful completion
+3. **Lost Package**: File claim, receive claim ID, contact information
+4. **Delivery Dispute**: Report non-delivery, automated dispute filing
+
+### Sample Order IDs for Testing
+
+Each test order represents a different package status and demonstrates specific conversation paths:
+
+- **ORD-1001**: Package in transit with estimated delivery
+- **ORD-2002**: Delivered package with delivery confirmation
+- **ORD-3003**: Delayed package with updated timeline
+- **ORD-4004**: Lost package requiring claim filing
+
+## Technical Implementation
+
+### Design Decisions
+
+- **CLI Interface**: Enables rapid development focus on conversation logic
+- **Retry Patterns**: Three-attempt system balancing user patience with efficiency
+- **Mock Data**: Realistic scenarios based on actual package tracking patterns
+- **State Management**: Clean conversation flow without complex state machines
+
+## Future Enhancements
+
+- Integration with real carrier APIs for live package data
+- Web-based interface for broader accessibility
+- Database storage for persistent user sessions
+- Multi-language support for international customers
+- Advanced analytics for conversation optimization
+
